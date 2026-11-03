@@ -1,0 +1,247 @@
+{
+  "schemaVersion": "1.0",
+  "publisher": "AhaSignals",
+  "case": "filing-cutoff-comparison-v1",
+  "edgartoolsVersion": "5.62.1",
+  "clockBasis": "SGML ACCEPTANCE-DATETIME, America/New_York converted to UTC; acceptance is not first public availability.",
+  "observationBasis": "Completion of this retrieval, not historical observation or dataset admission.",
+  "hashBasis": "SHA-256 of UTF-8 text returned by EdgarTools; not wire-response bytes.",
+  "rawDocumentsRedistributed": false,
+  "receipts": [
+    {
+      "accession": "0001193125-25-256321",
+      "cik": "0000789019",
+      "form": "10-Q",
+      "reportDate": "2025-09-30",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/msft-20250930.htm",
+      "submissionUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/0001193125-25-256321.txt",
+      "submissionSha256": "6f3a50a65ef92b05f34c66f68003c10b36ebde563c2e0682a56a0dbc18ebf576",
+      "documentSha256": "19bff665c255515267928569d48609521f38a9b9789152c3f71983e9821feeb2",
+      "acceptedAt": "2025-10-29T20:10:48+00:00",
+      "acceptanceRawEastern": "2025-10-29T16:10:48",
+      "observedAt": "2026-10-30T13:12:07.981091+00:00",
+      "firstPublicAvailableAt": null
+    },
+    {
+      "accession": "0001193125-26-436133",
+      "cik": "0000789019",
+      "form": "10-Q",
+      "reportDate": "2026-09-30",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm",
+      "submissionUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/0001193125-26-436133.txt",
+      "submissionSha256": "ffccb87dda210fd462f177077620c3a15436b4aabf9ee8ff6f2baf0b929ead82",
+      "documentSha256": "e530a22591acd938ab6b0ce65fa1f7f97eaf72e246250f819ce1a336f2d84e8e",
+      "acceptedAt": "2026-10-28T20:07:39+00:00",
+      "acceptanceRawEastern": "2026-10-28T16:07:39",
+      "observedAt": "2026-10-30T13:12:11.136356+00:00",
+      "firstPublicAvailableAt": null
+    }
+  ],
+  "facts": [
+    {
+      "factId": "filing-0001193125-25-256321-C_77513f4d-d996-497e-8795-6472b2325bfb",
+      "cik": "0000789019",
+      "taxonomy": "us-gaap",
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "unit": "USD",
+      "start": "2025-07-01",
+      "end": "2025-09-30",
+      "dimensions": [],
+      "value": 77673000000,
+      "accession": "0001193125-25-256321",
+      "acceptedAt": "2025-10-29T20:10:48+00:00",
+      "observedAt": "2026-10-30T13:12:07.981091+00:00",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/msft-20250930.htm",
+      "documentSha256": "19bff665c255515267928569d48609521f38a9b9789152c3f71983e9821feeb2",
+      "contextId": "C_77513f4d-d996-497e-8795-6472b2325bfb"
+    },
+    {
+      "factId": "filing-0001193125-25-256321-C_6ad2ddd9-5b98-49c1-84ca-4bab3ffd2055",
+      "cik": "0000789019",
+      "taxonomy": "us-gaap",
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "unit": "USD",
+      "start": "2025-07-01",
+      "end": "2025-09-30",
+      "dimensions": [
+        {
+          "axis": "us-gaap:StatementBusinessSegmentsAxis",
+          "member": "msft:ProductivityAndBusinessProcessesMember"
+        }
+      ],
+      "value": 33020000000,
+      "accession": "0001193125-25-256321",
+      "acceptedAt": "2025-10-29T20:10:48+00:00",
+      "observedAt": "2026-10-30T13:12:07.981091+00:00",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/msft-20250930.htm",
+      "documentSha256": "19bff665c255515267928569d48609521f38a9b9789152c3f71983e9821feeb2",
+      "contextId": "C_6ad2ddd9-5b98-49c1-84ca-4bab3ffd2055"
+    },
+    {
+      "factId": "filing-0001193125-25-256321-C_af6628c5-ed71-470a-85a5-ed7175a75cb1",
+      "cik": "0000789019",
+      "taxonomy": "us-gaap",
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "unit": "USD",
+      "start": "2025-07-01",
+      "end": "2025-09-30",
+      "dimensions": [
+        {
+          "axis": "us-gaap:StatementBusinessSegmentsAxis",
+          "member": "msft:IntelligentCloudMember"
+        }
+      ],
+      "value": 30897000000,
+      "accession": "0001193125-25-256321",
+      "acceptedAt": "2025-10-29T20:10:48+00:00",
+      "observedAt": "2026-10-30T13:12:07.981091+00:00",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/msft-20250930.htm",
+      "documentSha256": "19bff665c255515267928569d48609521f38a9b9789152c3f71983e9821feeb2",
+      "contextId": "C_af6628c5-ed71-470a-85a5-ed7175a75cb1"
+    },
+    {
+      "factId": "filing-0001193125-25-256321-C_b02c3fbe-e53e-4659-a6ea-8759f3c57823",
+      "cik": "0000789019",
+      "taxonomy": "us-gaap",
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "unit": "USD",
+      "start": "2025-07-01",
+      "end": "2025-09-30",
+      "dimensions": [
+        {
+          "axis": "us-gaap:StatementBusinessSegmentsAxis",
+          "member": "msft:MorePersonalComputingMember"
+        }
+      ],
+      "value": 13756000000,
+      "accession": "0001193125-25-256321",
+      "acceptedAt": "2025-10-29T20:10:48+00:00",
+      "observedAt": "2026-10-30T13:12:07.981091+00:00",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/msft-20250930.htm",
+      "documentSha256": "19bff665c255515267928569d48609521f38a9b9789152c3f71983e9821feeb2",
+      "contextId": "C_b02c3fbe-e53e-4659-a6ea-8759f3c57823"
+    },
+    {
+      "factId": "filing-0001193125-26-436133-C_3e98baf2-1fc5-4f5b-9b8c-c6e2e1dea677",
+      "cik": "0000789019",
+      "taxonomy": "us-gaap",
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "unit": "USD",
+      "start": "2025-07-01",
+      "end": "2025-09-30",
+      "dimensions": [],
+      "value": 77673000000,
+      "accession": "0001193125-26-436133",
+      "acceptedAt": "2026-10-28T20:07:39+00:00",
+      "observedAt": "2026-10-30T13:12:11.136356+00:00",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm",
+      "documentSha256": "e530a22591acd938ab6b0ce65fa1f7f97eaf72e246250f819ce1a336f2d84e8e",
+      "contextId": "C_3e98baf2-1fc5-4f5b-9b8c-c6e2e1dea677"
+    },
+    {
+      "factId": "filing-0001193125-26-436133-C_19827b72-bff2-4677-afd2-2d1657a083a2",
+      "cik": "0000789019",
+      "taxonomy": "us-gaap",
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "unit": "USD",
+      "start": "2025-07-01",
+      "end": "2025-09-30",
+      "dimensions": [
+        {
+          "axis": "us-gaap:StatementBusinessSegmentsAxis",
+          "member": "msft:AgentsAndInfraMember"
+        }
+      ],
+      "value": 61672000000,
+      "accession": "0001193125-26-436133",
+      "acceptedAt": "2026-10-28T20:07:39+00:00",
+      "observedAt": "2026-10-30T13:12:11.136356+00:00",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm",
+      "documentSha256": "e530a22591acd938ab6b0ce65fa1f7f97eaf72e246250f819ce1a336f2d84e8e",
+      "contextId": "C_19827b72-bff2-4677-afd2-2d1657a083a2"
+    },
+    {
+      "factId": "filing-0001193125-26-436133-C_776dbbd5-ce41-4f57-b115-fee8e693243c",
+      "cik": "0000789019",
+      "taxonomy": "us-gaap",
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "unit": "USD",
+      "start": "2025-07-01",
+      "end": "2025-09-30",
+      "dimensions": [
+        {
+          "axis": "us-gaap:StatementBusinessSegmentsAxis",
+          "member": "msft:DevicesAndConsumerMember"
+        }
+      ],
+      "value": 16001000000,
+      "accession": "0001193125-26-436133",
+      "acceptedAt": "2026-10-28T20:07:39+00:00",
+      "observedAt": "2026-10-30T13:12:11.136356+00:00",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm",
+      "documentSha256": "e530a22591acd938ab6b0ce65fa1f7f97eaf72e246250f819ce1a336f2d84e8e",
+      "contextId": "C_776dbbd5-ce41-4f57-b115-fee8e693243c"
+    },
+    {
+      "factId": "filing-0001193125-26-436133-C_4ca01806-c4cd-49d2-87c6-16fd7f17ad5d",
+      "cik": "0000789019",
+      "taxonomy": "us-gaap",
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "unit": "USD",
+      "start": "2026-07-01",
+      "end": "2026-09-30",
+      "dimensions": [],
+      "value": 92279000000,
+      "accession": "0001193125-26-436133",
+      "acceptedAt": "2026-10-28T20:07:39+00:00",
+      "observedAt": "2026-10-30T13:12:11.136356+00:00",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm",
+      "documentSha256": "e530a22591acd938ab6b0ce65fa1f7f97eaf72e246250f819ce1a336f2d84e8e",
+      "contextId": "C_4ca01806-c4cd-49d2-87c6-16fd7f17ad5d"
+    },
+    {
+      "factId": "filing-0001193125-26-436133-C_d63e0ec9-7988-46b4-a7f8-7eb42489d7ca",
+      "cik": "0000789019",
+      "taxonomy": "us-gaap",
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "unit": "USD",
+      "start": "2026-07-01",
+      "end": "2026-09-30",
+      "dimensions": [
+        {
+          "axis": "us-gaap:StatementBusinessSegmentsAxis",
+          "member": "msft:AgentsAndInfraMember"
+        }
+      ],
+      "value": 76795000000,
+      "accession": "0001193125-26-436133",
+      "acceptedAt": "2026-10-28T20:07:39+00:00",
+      "observedAt": "2026-10-30T13:12:11.136356+00:00",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm",
+      "documentSha256": "e530a22591acd938ab6b0ce65fa1f7f97eaf72e246250f819ce1a336f2d84e8e",
+      "contextId": "C_d63e0ec9-7988-46b4-a7f8-7eb42489d7ca"
+    },
+    {
+      "factId": "filing-0001193125-26-436133-C_68a91e79-5893-4bff-a032-719d94ee8be3",
+      "cik": "0000789019",
+      "taxonomy": "us-gaap",
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "unit": "USD",
+      "start": "2026-07-01",
+      "end": "2026-09-30",
+      "dimensions": [
+        {
+          "axis": "us-gaap:StatementBusinessSegmentsAxis",
+          "member": "msft:DevicesAndConsumerMember"
+        }
+      ],
+      "value": 15484000000,
+      "accession": "0001193125-26-436133",
+      "acceptedAt": "2026-10-28T20:07:39+00:00",
+      "observedAt": "2026-10-30T13:12:11.136356+00:00",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm",
+      "documentSha256": "e530a22591acd938ab6b0ce65fa1f7f97eaf72e246250f819ce1a336f2d84e8e",
+      "contextId": "C_68a91e79-5893-4bff-a032-719d94ee8be3"
+    }
+  ]
+}

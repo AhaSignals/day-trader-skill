@@ -1,0 +1,18 @@
+{
+  "analysis": "CoreWeave Q2 2025 consolidated operating income was USD 19.209 million.",
+  "cutoff": "2026-11-04T00:00:00Z",
+  "claims": [
+    {
+      "id": "claim-1",
+      "quote": "CoreWeave Q2 2025 consolidated operating income was USD 19.209 million.",
+      "cik": "0001769628",
+      "start": "2025-04-01",
+      "end": "2025-06-30",
+      "metric": "operating_income",
+      "value": "19209000",
+      "unit": "USD",
+      "scope": "consolidated",
+      "derived": false
+    }
+  ]
+}

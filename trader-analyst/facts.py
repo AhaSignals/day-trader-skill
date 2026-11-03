@@ -381,6 +381,36 @@ def latest_filings(submissions, cik, fetcher=None):
     return out
 
 
+# AhaSignals extension: date-level reconstruction, not intraday availability.
+def filed_before(companyfacts, submissions, boundary):
+    """Copy/filter every XBRL unit and recent filing BEFORE an exclusive date.
+
+    Same-day and unknown/malformed filed dates are excluded. Current snapshots
+    may omit historical versions: this is not proof of contemporaneous capture.
+    """
+    import copy
+    try:
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", boundary): raise ValueError()
+        limit = _date(boundary)
+    except (TypeError, ValueError):
+        raise FactsError("--filed-before requires YYYY-MM-DD") from None
+    def eligible(value):
+        try:
+            return isinstance(value, str) and bool(re.fullmatch(r"\d{4}-\d{2}-\d{2}", value)) and _date(value) < limit
+        except ValueError:
+            return False
+    cf, sub = copy.deepcopy(companyfacts), copy.deepcopy(submissions)
+    for namespace in cf.get("facts", {}).values():
+        for concept in namespace.values():
+            for unit, values in concept.get("units", {}).items():
+                concept["units"][unit] = [f for f in values if eligible(f.get("filed"))]
+    recent = sub.get("filings", {}).get("recent", {})
+    keep = [i for i, d in enumerate(recent.get("filingDate", [])) if eligible(d)]
+    for key, values in recent.items():
+        if isinstance(values, list): recent[key] = [values[i] for i in keep if i < len(values)]
+    return cf, sub
+
+
 # ---------------------------------------------------------------- output
 
 def _m(v):
@@ -478,10 +508,19 @@ def main(argv=None):
     ap.add_argument("--config", default="trader/config.json")
     ap.add_argument("--offline", metavar="DIR")
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--filed-before", help="exclusive filing date YYYY-MM-DD; excludes same-day/undated facts, not intraday PIT")
     args = ap.parse_args(argv)
+    if args.filed_before:
+        try: filed_before({}, {}, args.filed_before)
+        except FactsError as exc:
+            ap.error(str(exc))
+        if args.metrics:
+            ap.error("--metrics is disabled with --filed-before; save a separate --json export")
     if not args.tickers and not args.cik:
         ap.print_help()
         return 2
+    if args.filed_before:
+        print("Date-filtered reconstruction before " + args.filed_before + "; same-day/undated facts excluded. Current snapshots can omit old versions; ticker/name mapping is current, not historical. No contemporaneous capture or complete point-in-time claim.", file=sys.stderr)
     ua = user_agent(args.user_agent, args.config)
     if not ua and not args.offline:
         print("facts: " + UA_HELP, file=sys.stderr)
@@ -507,10 +546,14 @@ def main(argv=None):
             continue
         try:
             cf = fetcher.json(FACTS_URL % cik, "companyfacts-CIK%s.json" % cik)
+            if args.filed_before:
+                cf, _ = filed_before(cf, {}, args.filed_before)
             result = analyse(cf, quarters=args.quarters, name=name)
             filings = None
             if not args.no_filings:
                 sub = fetcher.json(SUBMISSIONS_URL % cik, "submissions-CIK%s.json" % cik)
+                if args.filed_before:
+                    _, sub = filed_before({}, sub, args.filed_before)
                 filings = latest_filings(sub, cik, fetcher)
         except FactsError as exc:
             print("facts: %s: %s" % (tick, exc), file=sys.stderr)

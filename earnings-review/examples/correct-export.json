@@ -1,0 +1,52 @@
+[
+  {
+    "ticker": "CRWV",
+    "result": {
+      "entity": "CoreWeave, Inc.",
+      "cik": "0001769628",
+      "rows": [
+        {
+          "end": "2025-06-30",
+          "start": "2025-04-01",
+          "fiscal": "Q2 2025",
+          "derived": false,
+          "revenue": 1212788000,
+          "gross_profit": null,
+          "operating_income": 19209000,
+          "net_income": -290509000,
+          "eps_diluted": null,
+          "gross_margin": null,
+          "operating_margin": 1.6,
+          "net_margin": -24.0,
+          "revenue_yoy": null,
+          "net_income_yoy": null,
+          "eps_yoy": null,
+          "filed": "2025-08-12",
+          "form": "10-Q"
+        }
+      ],
+      "ttm": {},
+      "concepts": {
+        "revenue": [
+          "RevenueFromContractWithCustomerExcludingAssessedTax"
+        ],
+        "cost_of_revenue": [],
+        "gross_profit": [],
+        "operating_income": [
+          "OperatingIncomeLoss"
+        ],
+        "net_income": [
+          "NetIncomeLoss"
+        ],
+        "eps_diluted": []
+      }
+    },
+    "filings": null,
+    "changes": [
+      "Quarter ending 2025-06-30: revenue $1.21B, net income $-290.5M.",
+      "Operating margin 1.6%.",
+      "Net margin -24.0%."
+    ],
+    "note": null
+  }
+]

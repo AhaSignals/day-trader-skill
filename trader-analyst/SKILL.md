@@ -121,3 +121,15 @@ so the summary read that 10-Q directly.
 Education and tooling, not financial advice. This skill only reads filings.
 Nothing places an order except `/trader-broker`, after `/trader-risk` passes
 and the user types an explicit yes for that order.
+
+
+## AhaSignals research edition
+
+When the user asks to verify an earnings analysis, retain the full `--json`
+export and route it to the installed `earnings-review` Skill. Its selected
+coverage is explicit; never describe UNKNOWN as a clean bill of health.
+For historical research, `--filed-before YYYY-MM-DD` filters facts and filing
+links strictly before that date. It excludes same-day facts, does not establish
+intraday availability, and cannot recover versions absent from the snapshot.
+Do not merge historical results into the current metrics file. Treat a source
+review as research evidence, never as broker approval.

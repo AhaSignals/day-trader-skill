@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+trader/
+review-results/
+demo-results/
+dist/
+.env

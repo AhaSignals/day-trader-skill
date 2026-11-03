@@ -1,13 +1,12 @@
 {
-  "name": "day-trader-skill",
-  "description": "11 Claude skills for day trading: scan thousands of charts, track breaking news, time every entry and exit, and replay every outcome before you risk a dollar.",
-  "version": "2.0.0",
+  "name": "ahasignals-research",
+  "description": "Source-bound earnings review with historical filing-date filtering. Independent research edition.",
+  "version": "0.1.0",
   "author": {
-    "name": "Jake Schincariol",
-    "url": "https://opusjake.ai"
+    "name": "AhaSignals"
   },
-  "homepage": "https://github.com/Jakeschincariol/day-trader-skill",
-  "repository": "https://github.com/Jakeschincariol/day-trader-skill",
+  "homepage": "https://github.com/AhaSignals/day-trader-skill",
+  "repository": "https://github.com/AhaSignals/day-trader-skill",
   "license": "MIT",
   "keywords": [
     "claude-code",
@@ -18,5 +17,8 @@
     "opening-range-breakout",
     "paper-trading"
   ],
-  "skills": "./"
+  "skills": [
+    "./trader-analyst",
+    "./earnings-review"
+  ]
 }

@@ -1,0 +1,14 @@
+{
+  "repository": "https://github.com/Jakeschincariol/day-trader-skill",
+  "commit": "3d0f4ef6986f4984b7c6bd46f7ff4f87744c3abd",
+  "edition": "AhaSignals Research Edition",
+  "version": "0.1.0",
+  "operator": "AhaSignals",
+  "coreWheelVersion": "0.5.0",
+  "coreWheelUnchanged": true,
+  "reviewSkill": {
+    "repository": "https://github.com/AhaSignals/earnings-review-skill",
+    "commit": "c897ceb52b32fa33fc0a6bb5025dd31ea26a4e8f",
+    "version": "0.2.0"
+  }
+}
