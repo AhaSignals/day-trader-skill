@@ -1,7 +1,7 @@
 {
   "name": "ahasignals-research",
   "description": "2 research skills and 7 read-only MCP tools: extract SEC financials, check mapped earnings claims, correct supported numeric errors and replay historical cutoffs. 3 free offline examples.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "AhaSignals"
   },

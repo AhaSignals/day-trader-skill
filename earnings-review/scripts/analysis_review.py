@@ -96,8 +96,17 @@ def markdown(r):
 def handle(req):
     if isinstance(req,dict) and req.get('jsonrpc')=='2.0' and 'id' in req:
         if req.get('method')=='tools/list':
-            res=core_handle(req);res['result']['tools'].append(TOOL);return res
+            res=core_handle(req);res['result']['tools']=[dict(t) for t in res['result']['tools']]+[TOOL];return res
         p=req.get('params',{})
+        if req.get('method')=='tools/call' and isinstance(p,dict) and p.get('name')=='review_earnings_export':
+            try:
+                from export_review import review as review_export
+                args=p.get('arguments',{})
+                if not isinstance(args,dict) or set(args)-{'payload','cutoff','sourceText','mode','analysis'}:raise ValueError('Invalid arguments')
+                r=review_export(args['payload'],args['cutoff'],args['sourceText'].encode() if 'sourceText' in args else None,args.get('mode','disclosure-reconstruction'),args.get('analysis',''))
+                return {'jsonrpc':'2.0','id':req['id'],'result':{'content':[{'type':'text','text':json.dumps(r,ensure_ascii=False,allow_nan=False)}],'isError':False}}
+            except Exception:
+                return {'jsonrpc':'2.0','id':req['id'],'result':{'content':[{'type':'text','text':'Invalid export or cutoff. Maximum 20 issuers and 100 rows; use one export per issuer.'}],'isError':True}}
         if req.get('method')=='tools/call' and isinstance(p,dict) and p.get('name')==TOOL['name']:
             try:
                 args=p.get('arguments',{})

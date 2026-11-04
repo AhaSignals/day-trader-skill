@@ -134,7 +134,7 @@ def facts_for(companyfacts, concept, unit_hint=None):
     if not node:
         return []
     units = node.get("units", {})
-    unit = unit_hint if unit_hint in units else next(iter(units), None)
+    unit = unit_hint if unit_hint is not None else next(iter(units), None)
     return units.get(unit, []) if unit else []
 
 
@@ -173,7 +173,8 @@ def quarterly(facts, derive_q4=True):
         if 80 <= days <= 100:
             q[end] = {"value": f["val"], "start": start, "end": end, "derived": False,
                       "fy": f.get("fy"), "fp": f.get("fp"), "form": f.get("form"),
-                      "filed": f.get("filed")}
+                      "filed": f.get("filed"), "accn": f.get("accn"),
+                      "inputs": [{k: f.get(k) for k in ("start", "end", "val", "filed", "accn", "form")}]}
         elif 350 <= days <= 380:
             years.append((start, end, f))
     if derive_q4:
@@ -182,13 +183,21 @@ def quarterly(facts, derive_q4=True):
                 continue
             inside = [v for v in q.values() if v["start"] >= start and v["end"] < end]
             inside.sort(key=lambda v: v["end"])
-            if len(inside) != 3:
+            if len(inside) != 3 or inside[0]["start"] != start:
+                continue
+            if any(_date(b["start"]) != _date(a["end"]) + _dt.timedelta(days=1)
+                   for a, b in zip(inside, inside[1:])):
+                continue
+            if not 80 <= (_date(end) - _date(inside[-1]["end"])).days <= 100:
                 continue
             last_q_start = _date(inside[-1]["end"]) + _dt.timedelta(days=1)
             q[end] = {"value": f["val"] - sum(v["value"] for v in inside),
                       "start": last_q_start.isoformat(), "end": end, "derived": True,
                       "fy": f.get("fy"), "fp": "Q4", "form": f.get("form"),
-                      "filed": f.get("filed")}
+                      "filed": max([f.get("filed") or ""] + [v.get("filed") or "" for v in inside]) or None,
+                      "accn": f.get("accn"),
+                      "inputs": [{k: f.get(k) for k in ("start", "end", "val", "filed", "accn", "form")}] +
+                                [item for v in inside for item in v["inputs"]]}
     return q
 
 
@@ -232,6 +241,33 @@ def margin(part, whole):
     return round(100.0 * part / whole, 1)
 
 
+def metric_provenance(point, key, cik):
+    """Provider provenance is not independent source verification."""
+    unit = "USD/shares" if key == "eps_diluted" else "USD"
+    if point is None:
+        return {"kind": "unknown", "unit": unit, "reason": "No eligible fact"}
+    derived = point["derived"]
+    sources = []
+    for raw in point.get("inputs", []):
+        source = dict(raw, concept=point.get("concept"), unit=unit)
+        accn = raw.get("accn") or ""
+        if str(cik).isdigit() and re.fullmatch(r"[0-9]{10}-[0-9]{2}-[0-9]{6}", accn):
+            source["url"] = "https://www.sec.gov/Archives/edgar/data/%d/%s/%s-index.html" % (int(cik), accn.replace("-", ""), accn)
+        sources.append(source)
+    return {"kind": "approximate" if derived and key == "eps_diluted" else "derived" if derived else "reported",
+            "unit": unit, "formula": "FY - Q1 - Q2 - Q3" if derived else None,
+            "start": point["start"], "end": point["end"], "sources": sources,
+            "basis": "SEC companyfacts export; not independently verified",
+            "note": "Annual and quarterly EPS use different weighted-average share counts; subtraction is approximate." if derived and key == "eps_diluted" else None}
+
+
+def calculated_provenance(formula, inputs, unit, value):
+    if value is None:
+        return {"kind": "unknown", "unit": unit, "formula": formula, "inputs": inputs, "reason": "Missing input or zero denominator"}
+    return {"kind": "approximate" if any(x["provenance"]["kind"] == "approximate" for x in inputs) else "derived",
+            "formula": formula, "unit": unit, "inputs": inputs, "basis": "Calculated from provider export; not independently verified"}
+
+
 def analyse(companyfacts, quarters=6, name=None):
     """Every number in the report, as a dict."""
     s = {}
@@ -253,10 +289,25 @@ def analyse(companyfacts, quarters=6, name=None):
         eps = s["eps_diluted"].get(end, {}).get("value")
         prior = {k: _yoy_match(s[k], end) for k in ("revenue", "net_income", "eps_diluted")}
         base = rev.get(end) or s["net_income"].get(end) or {}
+        provenance = {key: metric_provenance(s[key].get(end), key, companyfacts.get("cik", "")) for key in CONCEPTS}
+        def item(key, point=None):
+            pt = s[key].get(end) if point is None else point
+            return {"metric": key, "value": pt.get("value") if pt else None,
+                    "provenance": metric_provenance(pt, key, companyfacts.get("cik", ""))}
+        if s["gross_profit"].get(end) is None and gp is not None:
+            provenance["gross_profit"] = calculated_provenance("revenue - cost_of_revenue", [item("revenue"), item("cost_of_revenue")], "USD", gp)
+        for name_, numerator, value_ in (("gross_margin", "gross_profit", gp), ("operating_margin", "operating_income", oi), ("net_margin", "net_income", ni)):
+            provenance[name_] = calculated_provenance("numerator / revenue * 100", [{"metric": numerator, "value": value_, "provenance": provenance[numerator]}, item("revenue")], "percent", margin(value_, r))
+        for name_, key in (("revenue_yoy", "revenue"), ("net_income_yoy", "net_income"), ("eps_yoy", "eps_diluted")):
+            previous = prior[key]
+            old = {"metric": key, "value": previous.get("value") if previous else None, "provenance": metric_provenance(previous, key, companyfacts.get("cik", ""))}
+            current = item(key)
+            provenance[name_] = calculated_provenance("(current - prior) / abs(prior) * 100", [current, old], "percent", pct(current["value"], old["value"]))
         rows.append({
             "end": end, "start": base.get("start"),
             "fiscal": "%s %s" % (base.get("fp") or "", base.get("fy") or ""),
-            "derived": any(s[k].get(end, {}).get("derived") for k in ("revenue", "net_income")),
+            "derived": any(s[k].get(end, {}).get("derived") for k in CONCEPTS),
+            "metric_provenance": provenance,
             "revenue": r, "gross_profit": gp, "operating_income": oi, "net_income": ni,
             "eps_diluted": round(eps, 2) if eps is not None else None,
             "gross_margin": margin(gp, r), "operating_margin": margin(oi, r),
@@ -267,15 +318,20 @@ def analyse(companyfacts, quarters=6, name=None):
             "filed": base.get("filed"), "form": base.get("form"),
         })
     ttm = {}
+    ttm_provenance = {}
     for key in ("revenue", "net_income", "eps_diluted"):
         last4 = sorted(s[key])[-4:]
         if len(last4) == 4 and (_date(last4[-1]) - _date(last4[0])).days < 300:
             ttm[key] = sum(s[key][e]["value"] for e in last4)
+            ttm_provenance[key] = calculated_provenance("sum(last four quarters)", [{"metric": key, "value": s[key][e]["value"], "provenance": metric_provenance(s[key][e], key, companyfacts.get("cik", ""))} for e in last4], "USD/shares" if key == "eps_diluted" else "USD", ttm[key])
+            if key == "eps_diluted":
+                ttm_provenance[key]["kind"] = "approximate"
+                ttm_provenance[key]["note"] = "Sum of quarterly EPS; weighted-average share counts can differ."
     if "eps_diluted" in ttm:
         ttm["eps_diluted"] = round(ttm["eps_diluted"], 2)
     return {"entity": name or companyfacts.get("entityName"),
             "cik": str(companyfacts.get("cik", "")).zfill(10),
-            "rows": rows, "ttm": ttm, "concepts": concepts}
+            "rows": rows, "ttm": ttm, "ttm_provenance": ttm_provenance, "concepts": concepts}
 
 
 def stale_note(result, filings):
@@ -303,7 +359,7 @@ def changes(result):
     def money(v):
         return "n/a" if v is None else "$%.2fB" % (v / 1e9) if abs(v) >= 1e9 else "$%.1fM" % (v / 1e6)
 
-    label = "Quarter ending %s%s" % (cur["end"], " (derived from the 10-K)" if cur["derived"] else "")
+    label = "Quarter ending %s%s" % (cur["end"], " (contains derived metrics)" if cur["derived"] else "")
     line = "%s: revenue %s" % (label, money(cur["revenue"]))
     if cur["revenue_yoy"] is not None:
         line += " (%+.1f%% vs a year earlier)" % cur["revenue_yoy"]
@@ -466,7 +522,7 @@ def render(ticker, result, filings):
     if any(r["derived"] for r in result["rows"]):
         out.append("")
         out.append("Derived quarters are the 10-K year minus the three 10-Qs; derived EPS is "
-                   "approximate.")
+                   "approximate. See metric_provenance in JSON for per-metric inputs and filing sources.")
     return "\n".join(out) + "\n"
 
 

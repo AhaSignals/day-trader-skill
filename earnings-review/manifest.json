@@ -1,12 +1,12 @@
 {
-  "skillVersion": "0.2.0",
+  "skillVersion": "0.3.0",
   "packageVersion": "0.5.0",
   "publisher": "AhaSignals",
   "files": {
     "LICENSE": "5ac167ca0f0be92e98fcb6ec7c8506e53a1e11152c0ea879975b5d89d9de116f",
     "NOTICE.md": "aaf44d434e9c192d01e29fcf65ad0112eb4fd1a937123c8be8f9af8c38bceffb",
-    "README.md": "b96c50e84cfb954719b6c238613be7b023beb219307bde64106805ea013eda9c",
-    "SKILL.md": "9abd7f932f2b7593feb16151f6b72b74c0bc073a6b35582dbcf8d6183f9d2577",
+    "README.md": "04b4c8fe0b058e10b6db139f6781e97943c5caa0ef031fe8e9d658c83ddefd98",
+    "SKILL.md": "8068c873acd4a2ae8e839d5a78873b3ff2051a2ac564cf8b195b8696987a4a16",
     "examples/analysis/correct.json": "d72e3370def24701992df628c86f90b871ca8e352ea0787f51c9a3460671acc4",
     "examples/analysis/insufficient.json": "f092ce9525218fdbe0563904d9cdfa764c38402d6f11d5c27c59af69e87d301f",
     "examples/analysis/wrong.json": "9a1842c1782ff43a247d343e714530cd13b5150bb7173c12b6ea6b9cf8fd4b62",
@@ -18,15 +18,20 @@
     "examples/microsoft/packet.json": "f677ce80cd05848baf976c7335fe7610c52a6cad79774cbc0f7f80b3e2d973df",
     "examples/microsoft/profile.py": "ed76a350b78b852bba28b5c66946e31c076f63fcd45aeeaacdc82a3447265c0a",
     "examples/microsoft/replay.py": "5394c48ef0d13744e956dde1b1a46ee5990900b5a2fc9c7df37062707f5f58a4",
+    "examples/provenance/synthetic-q4-export.json": "203fdec25afe948e97b13c4f8a02c6da12cae332944da5e4fc0716c59b285958",
     "examples/wrong-export.json": "deebf412bd215a6e5ecce6c2498d04b99f9d4939c0630033fc06d133922cea27",
     "examples/wrong.json": "8a85fe90c18c0569be0b9af905bc811526c2f029af44cc715978f7f78b5b92fa",
     "references/ANALYSIS.md": "37bf6c515709a60c2dbce84d7da2a90aaa977eb1690d8a52a92adfb58d2bf870",
     "references/EARNINGS-REVIEW.md": "11d9c2681c0c7942d59e4d89d514c5b91a3f157063b5f821a852f7e270e36436",
+    "references/IMPORT.md": "6c4525f435ec20eb23dc49d39da694e3a16f84a5fcfc2c721edf54c1cd655719",
     "references/WALKTHROUGH.zh-CN.md": "8e78ad8f1c1b2e85845684b4eccf5386b884027ebb4ca06f931b533ff740b845",
-    "scripts/analysis_review.py": "73c1e300b57193ef66398fca1ee684e355cc333781a4fed9b95a99f20f284132",
+    "scripts/analysis_review.py": "4c0b9bad87d867410fc1dee1baa79e614600b52a26c4b97a1939b63cbd073fb9",
+    "scripts/export_review.py": "d360e95c9939c2e1a718c2b30e861cd5271552a7b6e04e3815c00833a890e53e",
+    "scripts/review_ui.py": "23971fd93fa6423626bd863f3dc3f1a42238a061d4105c57786abec550397c62",
     "scripts/run.py": "a308a3198478964572ed35b1282b914e5531c28b52aa28f8b419b6761caaa630",
     "scripts/selftest.py": "bcfaab6c7add136800592c6bb2930bdd8dfcba509deb0522e1961cbc1a0b8218",
-    "scripts/test_analysis_review.py": "29c8c88c55643ab6882c102527fafb2029d10a4873f13f38a80f2792d7f20ec7",
+    "scripts/test_analysis_review.py": "34a2fedb39c3619e07f23e5d50bab330d55a89954b303cd16b001706decb718d",
+    "scripts/test_export_review.py": "c3513b0110ba79a65b703269be1ddf6c663444b97d776bd85e0129f0f46b5da8",
     "vendor/ahasignals_pit-0.5.0-py3-none-any.whl": "5c4bf054dd123e63e7e7cea73aeeced533c4575fc516b531a700b2d58dc3663d"
   }
 }

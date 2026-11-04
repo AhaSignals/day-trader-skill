@@ -1,4 +1,10 @@
-# Earnings review Skill 0.2.0
+# Import JSON and read the review
+
+Run `python3 scripts/review_ui.py` and open the printed local URL. Choose an
+upstream earnings JSON export or one of three free examples. No model call or key.
+[Full import guide](references/IMPORT.md).
+
+# Earnings review Skill 0.3.0
 
 Keep the original analysis. Check mapped numbers against filing evidence. Return
 source-linked corrections and explicit unknowns.
@@ -30,7 +36,7 @@ Native day-trader-skill JSON remains supported through `scripts/run.py review-ex
 
 ## Shared engine
 
-The unchanged bundled wheel is ahasignals-pit 0.5.0. This release adds a portable
+The unchanged bundled wheel is ahasignals-pit 0.5.0. This release adds metric provenance display and local JSON import alongside the
 analysis-mapping adapter, not a new PyPI core version. Local MCP:
 `python3 scripts/analysis_review.py mcp`. Seven read-only tools, including
 `review_analysis_claims`. Microsoft replay remains unchanged.

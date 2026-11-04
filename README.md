@@ -56,6 +56,23 @@ The seven tools exposed by `analysis_review.py mcp` are:
 `inspect_financial_export`, `check_financial_facts`, `replay_financial_packet`
 and `run_financial_demo`. They reuse the bundled **ahasignals-pit** Python engine.
 
+## Import JSON and open the report
+
+```sh
+python3 earnings-review/scripts/review_ui.py
+```
+
+Open the printed local URL. Choose your upstream `facts.py --json` file, set the
+research cutoff and select **Review my export**. The three example buttons need
+no key or network. Download a readable HTML report or its JSON. For command-line
+use, run `export_review.py --input FILE --cutoff TIMESTAMP --out NEW_DIRECTORY`.
+See the [import guide](earnings-review/references/IMPORT.md).
+
+Each exported metric now identifies reported, derived, approximate or unknown
+origin, with formulas and filing inputs. Q4 EPS subtraction is explicitly
+approximate; a derived EPS also marks the row as derived. Provenance supplied by
+an input is never accepted as independent financial verification.
+
 ## Three minutes, no key
 
 ```sh
@@ -141,7 +158,7 @@ public remote MCP endpoint. Text-only chats can receive locally generated report
 
 <a href="https://github.com/codex"><img src="https://avatars.githubusercontent.com/u/267193182?v=4" width="48" height="48" alt="OpenAI Codex contributor avatar" /></a>
 
-**ChatGPT / Codex (OpenAI)** — AI-assisted development, documentation and local
+**ChatGPT / Codex (OpenAI)** - AI-assisted development, documentation and local
 verification of the AhaSignals research edition. Git commits credit the actual
 coding agent, Codex. AhaSignals maintains the project and is responsible for its
 published claims; this credit does not imply OpenAI sponsorship or endorsement.

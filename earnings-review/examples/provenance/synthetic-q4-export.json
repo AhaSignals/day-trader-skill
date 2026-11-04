@@ -1,0 +1,597 @@
+[
+  {
+    "ticker": "SYNTHETIC",
+    "result": {
+      "entity": "Synthetic provenance fixture; not financial evidence",
+      "cik": "0000000000",
+      "rows": [
+        {
+          "end": "2025-12-31",
+          "start": "2025-10-01",
+          "fiscal": "FY 2025",
+          "derived": true,
+          "metric_provenance": {
+            "revenue": {
+              "kind": "reported",
+              "unit": "USD",
+              "formula": null,
+              "start": "2025-10-01",
+              "end": "2025-12-31",
+              "sources": [
+                {
+                  "start": "2025-10-01",
+                  "end": "2025-12-31",
+                  "val": 100,
+                  "filed": "2026-02-01",
+                  "accn": null,
+                  "form": "10-K",
+                  "concept": "Revenues",
+                  "unit": "USD"
+                }
+              ],
+              "basis": "SEC companyfacts export; not independently verified",
+              "note": null
+            },
+            "cost_of_revenue": {
+              "kind": "unknown",
+              "unit": "USD",
+              "reason": "No eligible fact"
+            },
+            "gross_profit": {
+              "kind": "unknown",
+              "unit": "USD",
+              "reason": "No eligible fact"
+            },
+            "operating_income": {
+              "kind": "unknown",
+              "unit": "USD",
+              "reason": "No eligible fact"
+            },
+            "net_income": {
+              "kind": "reported",
+              "unit": "USD",
+              "formula": null,
+              "start": "2025-10-01",
+              "end": "2025-12-31",
+              "sources": [
+                {
+                  "start": "2025-10-01",
+                  "end": "2025-12-31",
+                  "val": 10,
+                  "filed": "2026-02-01",
+                  "accn": null,
+                  "form": "10-K",
+                  "concept": "NetIncomeLoss",
+                  "unit": "USD"
+                }
+              ],
+              "basis": "SEC companyfacts export; not independently verified",
+              "note": null
+            },
+            "eps_diluted": {
+              "kind": "approximate",
+              "unit": "USD/shares",
+              "formula": "FY - Q1 - Q2 - Q3",
+              "start": "2025-10-01",
+              "end": "2025-12-31",
+              "sources": [
+                {
+                  "start": "2025-01-01",
+                  "end": "2025-12-31",
+                  "val": 10,
+                  "filed": "2026-02-01",
+                  "accn": null,
+                  "form": "10-K",
+                  "concept": "EarningsPerShareDiluted",
+                  "unit": "USD/shares"
+                },
+                {
+                  "start": "2025-01-01",
+                  "end": "2025-03-31",
+                  "val": 1,
+                  "filed": "2026-02-01",
+                  "accn": null,
+                  "form": "10-Q",
+                  "concept": "EarningsPerShareDiluted",
+                  "unit": "USD/shares"
+                },
+                {
+                  "start": "2025-04-01",
+                  "end": "2025-06-30",
+                  "val": 2,
+                  "filed": "2026-02-01",
+                  "accn": null,
+                  "form": "10-Q",
+                  "concept": "EarningsPerShareDiluted",
+                  "unit": "USD/shares"
+                },
+                {
+                  "start": "2025-07-01",
+                  "end": "2025-09-30",
+                  "val": 3,
+                  "filed": "2026-02-01",
+                  "accn": null,
+                  "form": "10-Q",
+                  "concept": "EarningsPerShareDiluted",
+                  "unit": "USD/shares"
+                }
+              ],
+              "basis": "SEC companyfacts export; not independently verified",
+              "note": "Annual and quarterly EPS use different weighted-average share counts; subtraction is approximate."
+            },
+            "gross_margin": {
+              "kind": "unknown",
+              "unit": "percent",
+              "formula": "numerator / revenue * 100",
+              "inputs": [
+                {
+                  "metric": "gross_profit",
+                  "value": null,
+                  "provenance": {
+                    "kind": "unknown",
+                    "unit": "USD",
+                    "reason": "No eligible fact"
+                  }
+                },
+                {
+                  "metric": "revenue",
+                  "value": 100,
+                  "provenance": {
+                    "kind": "reported",
+                    "unit": "USD",
+                    "formula": null,
+                    "start": "2025-10-01",
+                    "end": "2025-12-31",
+                    "sources": [
+                      {
+                        "start": "2025-10-01",
+                        "end": "2025-12-31",
+                        "val": 100,
+                        "filed": "2026-02-01",
+                        "accn": null,
+                        "form": "10-K",
+                        "concept": "Revenues",
+                        "unit": "USD"
+                      }
+                    ],
+                    "basis": "SEC companyfacts export; not independently verified",
+                    "note": null
+                  }
+                }
+              ],
+              "reason": "Missing input or zero denominator"
+            },
+            "operating_margin": {
+              "kind": "unknown",
+              "unit": "percent",
+              "formula": "numerator / revenue * 100",
+              "inputs": [
+                {
+                  "metric": "operating_income",
+                  "value": null,
+                  "provenance": {
+                    "kind": "unknown",
+                    "unit": "USD",
+                    "reason": "No eligible fact"
+                  }
+                },
+                {
+                  "metric": "revenue",
+                  "value": 100,
+                  "provenance": {
+                    "kind": "reported",
+                    "unit": "USD",
+                    "formula": null,
+                    "start": "2025-10-01",
+                    "end": "2025-12-31",
+                    "sources": [
+                      {
+                        "start": "2025-10-01",
+                        "end": "2025-12-31",
+                        "val": 100,
+                        "filed": "2026-02-01",
+                        "accn": null,
+                        "form": "10-K",
+                        "concept": "Revenues",
+                        "unit": "USD"
+                      }
+                    ],
+                    "basis": "SEC companyfacts export; not independently verified",
+                    "note": null
+                  }
+                }
+              ],
+              "reason": "Missing input or zero denominator"
+            },
+            "net_margin": {
+              "kind": "derived",
+              "formula": "numerator / revenue * 100",
+              "unit": "percent",
+              "inputs": [
+                {
+                  "metric": "net_income",
+                  "value": 10,
+                  "provenance": {
+                    "kind": "reported",
+                    "unit": "USD",
+                    "formula": null,
+                    "start": "2025-10-01",
+                    "end": "2025-12-31",
+                    "sources": [
+                      {
+                        "start": "2025-10-01",
+                        "end": "2025-12-31",
+                        "val": 10,
+                        "filed": "2026-02-01",
+                        "accn": null,
+                        "form": "10-K",
+                        "concept": "NetIncomeLoss",
+                        "unit": "USD"
+                      }
+                    ],
+                    "basis": "SEC companyfacts export; not independently verified",
+                    "note": null
+                  }
+                },
+                {
+                  "metric": "revenue",
+                  "value": 100,
+                  "provenance": {
+                    "kind": "reported",
+                    "unit": "USD",
+                    "formula": null,
+                    "start": "2025-10-01",
+                    "end": "2025-12-31",
+                    "sources": [
+                      {
+                        "start": "2025-10-01",
+                        "end": "2025-12-31",
+                        "val": 100,
+                        "filed": "2026-02-01",
+                        "accn": null,
+                        "form": "10-K",
+                        "concept": "Revenues",
+                        "unit": "USD"
+                      }
+                    ],
+                    "basis": "SEC companyfacts export; not independently verified",
+                    "note": null
+                  }
+                }
+              ],
+              "basis": "Calculated from provider export; not independently verified"
+            },
+            "revenue_yoy": {
+              "kind": "unknown",
+              "unit": "percent",
+              "formula": "(current - prior) / abs(prior) * 100",
+              "inputs": [
+                {
+                  "metric": "revenue",
+                  "value": 100,
+                  "provenance": {
+                    "kind": "reported",
+                    "unit": "USD",
+                    "formula": null,
+                    "start": "2025-10-01",
+                    "end": "2025-12-31",
+                    "sources": [
+                      {
+                        "start": "2025-10-01",
+                        "end": "2025-12-31",
+                        "val": 100,
+                        "filed": "2026-02-01",
+                        "accn": null,
+                        "form": "10-K",
+                        "concept": "Revenues",
+                        "unit": "USD"
+                      }
+                    ],
+                    "basis": "SEC companyfacts export; not independently verified",
+                    "note": null
+                  }
+                },
+                {
+                  "metric": "revenue",
+                  "value": null,
+                  "provenance": {
+                    "kind": "unknown",
+                    "unit": "USD",
+                    "reason": "No eligible fact"
+                  }
+                }
+              ],
+              "reason": "Missing input or zero denominator"
+            },
+            "net_income_yoy": {
+              "kind": "unknown",
+              "unit": "percent",
+              "formula": "(current - prior) / abs(prior) * 100",
+              "inputs": [
+                {
+                  "metric": "net_income",
+                  "value": 10,
+                  "provenance": {
+                    "kind": "reported",
+                    "unit": "USD",
+                    "formula": null,
+                    "start": "2025-10-01",
+                    "end": "2025-12-31",
+                    "sources": [
+                      {
+                        "start": "2025-10-01",
+                        "end": "2025-12-31",
+                        "val": 10,
+                        "filed": "2026-02-01",
+                        "accn": null,
+                        "form": "10-K",
+                        "concept": "NetIncomeLoss",
+                        "unit": "USD"
+                      }
+                    ],
+                    "basis": "SEC companyfacts export; not independently verified",
+                    "note": null
+                  }
+                },
+                {
+                  "metric": "net_income",
+                  "value": null,
+                  "provenance": {
+                    "kind": "unknown",
+                    "unit": "USD",
+                    "reason": "No eligible fact"
+                  }
+                }
+              ],
+              "reason": "Missing input or zero denominator"
+            },
+            "eps_yoy": {
+              "kind": "unknown",
+              "unit": "percent",
+              "formula": "(current - prior) / abs(prior) * 100",
+              "inputs": [
+                {
+                  "metric": "eps_diluted",
+                  "value": 4,
+                  "provenance": {
+                    "kind": "approximate",
+                    "unit": "USD/shares",
+                    "formula": "FY - Q1 - Q2 - Q3",
+                    "start": "2025-10-01",
+                    "end": "2025-12-31",
+                    "sources": [
+                      {
+                        "start": "2025-01-01",
+                        "end": "2025-12-31",
+                        "val": 10,
+                        "filed": "2026-02-01",
+                        "accn": null,
+                        "form": "10-K",
+                        "concept": "EarningsPerShareDiluted",
+                        "unit": "USD/shares"
+                      },
+                      {
+                        "start": "2025-01-01",
+                        "end": "2025-03-31",
+                        "val": 1,
+                        "filed": "2026-02-01",
+                        "accn": null,
+                        "form": "10-Q",
+                        "concept": "EarningsPerShareDiluted",
+                        "unit": "USD/shares"
+                      },
+                      {
+                        "start": "2025-04-01",
+                        "end": "2025-06-30",
+                        "val": 2,
+                        "filed": "2026-02-01",
+                        "accn": null,
+                        "form": "10-Q",
+                        "concept": "EarningsPerShareDiluted",
+                        "unit": "USD/shares"
+                      },
+                      {
+                        "start": "2025-07-01",
+                        "end": "2025-09-30",
+                        "val": 3,
+                        "filed": "2026-02-01",
+                        "accn": null,
+                        "form": "10-Q",
+                        "concept": "EarningsPerShareDiluted",
+                        "unit": "USD/shares"
+                      }
+                    ],
+                    "basis": "SEC companyfacts export; not independently verified",
+                    "note": "Annual and quarterly EPS use different weighted-average share counts; subtraction is approximate."
+                  }
+                },
+                {
+                  "metric": "eps_diluted",
+                  "value": null,
+                  "provenance": {
+                    "kind": "unknown",
+                    "unit": "USD/shares",
+                    "reason": "No eligible fact"
+                  }
+                }
+              ],
+              "reason": "Missing input or zero denominator"
+            }
+          },
+          "revenue": 100,
+          "gross_profit": null,
+          "operating_income": null,
+          "net_income": 10,
+          "eps_diluted": 4,
+          "gross_margin": null,
+          "operating_margin": null,
+          "net_margin": 10.0,
+          "revenue_yoy": null,
+          "net_income_yoy": null,
+          "eps_yoy": null,
+          "filed": "2026-02-01",
+          "form": "10-K"
+        }
+      ],
+      "ttm": {
+        "eps_diluted": 10
+      },
+      "ttm_provenance": {
+        "eps_diluted": {
+          "kind": "approximate",
+          "formula": "sum(last four quarters)",
+          "unit": "USD/shares",
+          "inputs": [
+            {
+              "metric": "eps_diluted",
+              "value": 1,
+              "provenance": {
+                "kind": "reported",
+                "unit": "USD/shares",
+                "formula": null,
+                "start": "2025-01-01",
+                "end": "2025-03-31",
+                "sources": [
+                  {
+                    "start": "2025-01-01",
+                    "end": "2025-03-31",
+                    "val": 1,
+                    "filed": "2026-02-01",
+                    "accn": null,
+                    "form": "10-Q",
+                    "concept": "EarningsPerShareDiluted",
+                    "unit": "USD/shares"
+                  }
+                ],
+                "basis": "SEC companyfacts export; not independently verified",
+                "note": null
+              }
+            },
+            {
+              "metric": "eps_diluted",
+              "value": 2,
+              "provenance": {
+                "kind": "reported",
+                "unit": "USD/shares",
+                "formula": null,
+                "start": "2025-04-01",
+                "end": "2025-06-30",
+                "sources": [
+                  {
+                    "start": "2025-04-01",
+                    "end": "2025-06-30",
+                    "val": 2,
+                    "filed": "2026-02-01",
+                    "accn": null,
+                    "form": "10-Q",
+                    "concept": "EarningsPerShareDiluted",
+                    "unit": "USD/shares"
+                  }
+                ],
+                "basis": "SEC companyfacts export; not independently verified",
+                "note": null
+              }
+            },
+            {
+              "metric": "eps_diluted",
+              "value": 3,
+              "provenance": {
+                "kind": "reported",
+                "unit": "USD/shares",
+                "formula": null,
+                "start": "2025-07-01",
+                "end": "2025-09-30",
+                "sources": [
+                  {
+                    "start": "2025-07-01",
+                    "end": "2025-09-30",
+                    "val": 3,
+                    "filed": "2026-02-01",
+                    "accn": null,
+                    "form": "10-Q",
+                    "concept": "EarningsPerShareDiluted",
+                    "unit": "USD/shares"
+                  }
+                ],
+                "basis": "SEC companyfacts export; not independently verified",
+                "note": null
+              }
+            },
+            {
+              "metric": "eps_diluted",
+              "value": 4,
+              "provenance": {
+                "kind": "approximate",
+                "unit": "USD/shares",
+                "formula": "FY - Q1 - Q2 - Q3",
+                "start": "2025-10-01",
+                "end": "2025-12-31",
+                "sources": [
+                  {
+                    "start": "2025-01-01",
+                    "end": "2025-12-31",
+                    "val": 10,
+                    "filed": "2026-02-01",
+                    "accn": null,
+                    "form": "10-K",
+                    "concept": "EarningsPerShareDiluted",
+                    "unit": "USD/shares"
+                  },
+                  {
+                    "start": "2025-01-01",
+                    "end": "2025-03-31",
+                    "val": 1,
+                    "filed": "2026-02-01",
+                    "accn": null,
+                    "form": "10-Q",
+                    "concept": "EarningsPerShareDiluted",
+                    "unit": "USD/shares"
+                  },
+                  {
+                    "start": "2025-04-01",
+                    "end": "2025-06-30",
+                    "val": 2,
+                    "filed": "2026-02-01",
+                    "accn": null,
+                    "form": "10-Q",
+                    "concept": "EarningsPerShareDiluted",
+                    "unit": "USD/shares"
+                  },
+                  {
+                    "start": "2025-07-01",
+                    "end": "2025-09-30",
+                    "val": 3,
+                    "filed": "2026-02-01",
+                    "accn": null,
+                    "form": "10-Q",
+                    "concept": "EarningsPerShareDiluted",
+                    "unit": "USD/shares"
+                  }
+                ],
+                "basis": "SEC companyfacts export; not independently verified",
+                "note": "Annual and quarterly EPS use different weighted-average share counts; subtraction is approximate."
+              }
+            }
+          ],
+          "basis": "Calculated from provider export; not independently verified",
+          "note": "Sum of quarterly EPS; weighted-average share counts can differ."
+        }
+      },
+      "concepts": {
+        "revenue": [
+          "Revenues"
+        ],
+        "cost_of_revenue": [],
+        "gross_profit": [],
+        "operating_income": [],
+        "net_income": [
+          "NetIncomeLoss"
+        ],
+        "eps_diluted": [
+          "EarningsPerShareDiluted"
+        ]
+      }
+    },
+    "note": "Synthetic control-flow fixture; not real financial evidence."
+  }
+]

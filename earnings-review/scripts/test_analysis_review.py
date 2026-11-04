@@ -1,9 +1,12 @@
 import copy,json,socket,unittest
 from pathlib import Path
+from unittest.mock import patch
 from analysis_review import review,handle,strict_load
-socket.socket=lambda *a,**k: (_ for _ in ()).throw(RuntimeError('Network forbidden'))
 ROOT=Path(__file__).resolve().parents[1]
 class ReviewTests(unittest.TestCase):
+    def setUp(self):
+        guard=patch("socket.socket",side_effect=RuntimeError("Network forbidden"))
+        guard.start();self.addCleanup(guard.stop)
     def packet(self,n='correct'):return json.loads((ROOT/'examples/analysis'/f'{n}.json').read_text())
     def status(self,p):return review(p)['claims'][0]['numericReview']['status']
     def test_three_cases_and_mcp_parity(self):
