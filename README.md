@@ -96,6 +96,16 @@ Use `review_analysis_claims` for mapped prose, `review_earnings_export` for nati
 JSON. Both reuse the pinned ahasignals-pit 0.5.0 engine. A stdio server is not a
 public remote MCP endpoint. Text-only chats can receive locally generated reports.
 
+## Contributors and AI assistance
+
+<a href="https://github.com/codex"><img src="https://avatars.githubusercontent.com/u/267193182?v=4" width="48" height="48" alt="OpenAI Codex contributor avatar" /></a>
+
+**ChatGPT / Codex (OpenAI)** — AI-assisted development, documentation and local
+verification of the AhaSignals research edition. Git commits credit the actual
+coding agent, Codex. AhaSignals maintains the project and is responsible for its
+published claims; this credit does not imply OpenAI sponsorship or endorsement.
+Original upstream author and Claude co-author credits remain in the commit history.
+
 ## Limits and maintenance
 
 We test software behavior and historical replay locally, not trading profitability
