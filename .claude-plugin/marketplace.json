@@ -1,14 +1,14 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "ahasignals-research",
-  "description": "AhaSignals financial research skills; independent upstream fork.",
+  "description": "2 default financial research skills: SEC earnings extraction and source-bound claim review. Independent AhaSignals fork.",
   "owner": {
     "name": "AhaSignals"
   },
   "plugins": [
     {
       "name": "ahasignals-research",
-      "description": "Earnings extraction and source-bound review; no broker skills installed by this profile.",
+      "description": "2 research skills, 7 read-only MCP tools and 3 free offline examples: extract SEC financials, check mapped claims and replay historical cutoffs.",
       "source": "./",
       "category": "productivity",
       "homepage": "https://github.com/AhaSignals/day-trader-skill"

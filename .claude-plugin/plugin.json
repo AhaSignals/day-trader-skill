@@ -1,6 +1,6 @@
 {
   "name": "ahasignals-research",
-  "description": "Source-bound earnings review with historical filing-date filtering. Independent research edition.",
+  "description": "2 research skills and 7 read-only MCP tools: extract SEC financials, check mapped earnings claims, correct supported numeric errors and replay historical cutoffs. 3 free offline examples.",
   "version": "0.1.0",
   "author": {
     "name": "AhaSignals"
@@ -9,13 +9,18 @@
   "repository": "https://github.com/AhaSignals/day-trader-skill",
   "license": "MIT",
   "keywords": [
+    "agent-skills",
     "claude-code",
     "claude-skills",
-    "day-trading",
-    "stock-market",
-    "backtesting",
-    "opening-range-breakout",
-    "paper-trading"
+    "earnings-analysis",
+    "financial-statements",
+    "sec-edgar",
+    "financial-research",
+    "mcp",
+    "point-in-time",
+    "look-ahead-bias",
+    "python",
+    "day-trading"
   ],
   "skills": [
     "./trader-analyst",

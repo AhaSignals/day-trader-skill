@@ -1,7 +1,26 @@
 # Day Trader Skill - AhaSignals Research Edition
 
-**Check the earnings claims behind your analysis.** Keep correct figures, correct
-source-supported numerical errors, and show what remains unknown.
+**2 default research skills + 7 read-only MCP tools:** extract SEC financials,
+check mapped earnings claims against reviewed evidence, correct supported numeric
+errors, and replay historical cutoffs. Start with **3 free offline examples**.
+
+| Included | What you can do |
+|---|---|
+| **2 default skills** | `trader-analyst` extracts SEC financials; `earnings-review` checks mapped claims and produces a corrected numeric statement with sources. |
+| **7 local MCP tools** | Inspect exports, check facts, review claims, run examples and replay saved evidence packets. |
+| **3 offline examples** | Reproduce a correct claim, a numerical error and an insufficient-evidence result without an API key or model call. |
+| **12 skill folders in the repository** | 11 upstream modules plus AhaSignals' earnings review; only the 2 research skills are installed by default. |
+| **Python CLI + portable Skill** | Run the same review engine locally or connect it to an execution-capable assistant. |
+
+The numeric reviewer currently covers selected **CoreWeave Q2 2025** metrics.
+Unsupported companies, periods and claims stay UNKNOWN. Source support for a
+number does not verify the entire investment thesis.
+
+**Host integration:** Claude Code plugin, portable Skill for Codex and Kimi Code,
+and function schemas for DeepSeek/Grok API applications. ChatGPT and other
+text-only chats can use the instructions and locally generated reports. See the
+[compatibility matrix](docs/COMPATIBILITY.md) for setup and what was actually
+tested; installation and automatic invocation depend on the host.
 
 Independent fork of [Jakeschincariol/day-trader-skill](https://github.com/Jakeschincariol/day-trader-skill),
 pinned to `3d0f4ef6986f4984b7c6bd46f7ff4f87744c3abd`.
@@ -14,6 +33,28 @@ No affiliation or endorsement is implied.
 [Host compatibility](docs/COMPATIBILITY.md) ·
 [Validation](docs/VALIDATION.md) ·
 [Upstream documentation](docs/UPSTREAM-README.md)
+
+## Skills and tools
+
+The default research workflow is **SEC financials / your analysis → mapped claims
+→ source checks → supported numbers, corrections or UNKNOWN**.
+
+| Default Skill | Main functions |
+|---|---|
+| [`trader-analyst`](trader-analyst/SKILL.md) | Extract revenue, margins, net income and EPS from SEC company facts; compare reported periods; filter filings before a historical date. |
+| [`earnings-review`](earnings-review/SKILL.md) | Review analyst JSON or exact excerpts from your analysis; check the proposed issuer, period, metric and unit against covered evidence; return source locations and revised numeric statements. |
+
+Retained upstream skills: `trader-scanner`, `trader-news`, `trader-entry`,
+`trader-exit`, `trader-risk`, `trader-budget`, `trader-broker`, `trader-alerts`,
+`trader-pelosi`, `trader-timemachine`, plus the default `trader-analyst` above.
+Chart scanning and trading modules are documented in the
+[upstream guide](docs/UPSTREAM-README.md); they are outside the default research
+installation. This edition does not claim a verified chart-coverage count.
+
+The seven tools exposed by `analysis_review.py mcp` are:
+`review_analysis_claims`, `review_earnings_export`, `review_earnings_claim`,
+`inspect_financial_export`, `check_financial_facts`, `replay_financial_packet`
+and `run_financial_demo`. They reuse the bundled **ahasignals-pit** Python engine.
 
 ## Three minutes, no key
 
